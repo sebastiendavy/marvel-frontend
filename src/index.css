@@ -1,0 +1,11 @@
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+    url("https://wallpapercave.com/wp/wp8793793.jpg");
+  background-position: center;
+  background-attachment: fixed; /* le fond ne défile pas avec le contenu */
+}
