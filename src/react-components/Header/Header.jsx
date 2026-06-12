@@ -5,9 +5,16 @@ import { Heart } from "lucide-react";
 
 function Header() {
   return (
-    <header className="flex justify-center pt-8 pb-10">
+    <header className="flex flex-col justify-center pb-10 gap-16">
+      <div className="w-full flex justify-end p-2 gap-3 border-b border-gray-100">
+        <Button variant="outline" size="sm">
+          Log in
+        </Button>
+        <Button variant="outline" size="sm">
+          Sign up
+        </Button>
+      </div>{" "}
       <div className="flex justify-center flex-col items-center gap-4">
-        {" "}
         <Link to="/">
           <img src={Logo} alt="Logo Marvel" className="w-28" />
         </Link>
@@ -23,7 +30,7 @@ function Header() {
             {" "}
             <Button variant="ghost">
               <Heart />
-              My favorites
+              Favorites
             </Button>
           </Link>
         </div>

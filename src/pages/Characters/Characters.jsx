@@ -12,7 +12,7 @@ function Characters() {
   const [search, setSearch] = useState("");
 
   // Pagination
-  const limit = 20;
+  const limit = 100;
   const pagesTab = [];
   if (data) {
     let pageNumber = 1;

@@ -45,7 +45,7 @@ function CharacterDetail() {
             src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           />{" "}
           <div className="mb-5">
-            <h1 className="text-xl font-bold">{character.name}</h1>
+            <h1 className="text-xl font-bold mb-2">{character.name}</h1>
             <p>{character.description}</p>
           </div>
         </div>
