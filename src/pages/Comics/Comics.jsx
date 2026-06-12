@@ -3,6 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
 import Pagination from "@/react-components/Pagination/Pagination";
+import { SearchIcon } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Link } from "react-router-dom";
 
 function Comics() {
   const [data, setData] = useState({});
@@ -38,39 +46,45 @@ function Comics() {
   }, [limit, page, search]);
 
   return isLoading ? (
-    <div className=" max-w-6xl mx-auto flex justify-center">
-      <span>Loading... </span>
+    <div className="mx-auto flex justify-center">
+      <Spinner />
     </div>
   ) : (
     <>
-      <div className=" max-w-6xl mx-auto flex gap-4 flex-col">
-        <div className="flex justify-between items-center">
+      <div className="mx-auto p-8 flex gap-4 flex-col">
+        <div className="flex justify-between items-center flex-col gap-2 sm:flex-row">
           <div className="flex gap-2">
             <h1 className="text-large font-bold">Comics</h1>
             <span className="text-gray-500">({data.count})</span>
           </div>
-          <Input
-            type="search"
-            placeholder="Search for a comic..."
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              setPage(1);
-            }}
-            className="bg-gray-100 w-3xs"
-          />
+          <InputGroup className="bg-gray-50 w-full sm:w-64">
+            <InputGroupInput
+              placeholder="Search for a comic..."
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setPage(1);
+              }}
+            />
+            <InputGroupAddon>
+              <SearchIcon className="text-muted-foreground" />
+            </InputGroupAddon>
+          </InputGroup>
         </div>
 
-        <div className="grid grid-cols-5 gap-4 flex-wrap">
+        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {data.results
             .sort((a, b) => (a.title < b.title ? -1 : 1))
             .map((comic, index) => {
-              return <ComicCard comic={comic} key={index} />;
+              return (
+                <Link to={`/comic/${comic._id}`} key={index}>
+                  <ComicCard comic={comic} key={index} />
+                </Link>
+              );
             })}
         </div>
       </div>
       <div className="max-w-6xl mx-auto flex gap-4 justify-center py-8">
-        {" "}
         <Pagination
           setPage={setPage}
           limit={limit}

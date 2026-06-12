@@ -1,5 +1,6 @@
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 function CharacterCard({ character, onToggleFavorite }) {
   const noImage = character.thumbnail.path.includes("image_not_available");
@@ -50,15 +51,18 @@ function CharacterCard({ character, onToggleFavorite }) {
             className="grayscale h-56 object-cover group-hover:grayscale-0 transition duration-300 "
           />
         )}
-        <div
-          className="bg-white p-2 rounded-full absolute top-3 right-3 hover:bg-gray-100"
-          onClick={handleFavorite}
-        >
-          <Heart
-            className={isLiked ? "text-red-500" : "text-black"}
-            fill={isLiked ? "currentColor" : "none"}
-          />
-        </div>
+
+        {Cookies.get("marvel-token") && (
+          <div
+            className="bg-white p-2 rounded-full absolute top-3 right-3 hover:bg-gray-100"
+            onClick={handleFavorite}
+          >
+            <Heart
+              className={isLiked ? "text-red-500" : "text-black"}
+              fill={isLiked ? "currentColor" : "none"}
+            />
+          </div>
+        )}
 
         <div className="p-3">
           {" "}

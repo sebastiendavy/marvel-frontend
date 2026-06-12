@@ -9,3 +9,7 @@ body {
   background-position: center;
   background-attachment: fixed; /* le fond ne défile pas avec le contenu */
 }
+
+html body[data-scroll-locked] {
+  margin-right: 0 !important;
+}

@@ -20,7 +20,6 @@ function CharacterDetail() {
           `https://site--marvel-backend--n8fnmcvdjwtl.code.run/comics/${characterId}`,
         );
         console.log(characterResponse.data);
-        console.log(characterResponse.data);
         setCharacter(characterResponse.data);
         setComic(comicResponse.data);
         setIsLoading(false);
@@ -32,12 +31,12 @@ function CharacterDetail() {
   }, [characterId]);
 
   return isLoading ? (
-    <div className=" max-w-6xl mx-auto flex justify-center">
+    <div className="mx-auto flex justify-center">
       <span>Loading... </span>
     </div>
   ) : (
     <>
-      <div className=" max-w-6xl mx-auto">
+      <div className=" mx-auto p-8 ">
         <div className="flex flex-col gap-4 border-b border-gray-200">
           {" "}
           <img
@@ -56,7 +55,7 @@ function CharacterDetail() {
             <span className="text-gray-500">({comic.comics.length})</span>
           </div>
 
-          <div className="grid grid-cols-5 gap-4 flex-wrap">
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {comic.comics.map((comic, index) => {
               return <ComicCard comic={comic} key={index} />;
             })}

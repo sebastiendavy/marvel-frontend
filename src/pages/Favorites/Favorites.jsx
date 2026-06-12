@@ -27,42 +27,37 @@ function Favorites() {
   return (
     <>
       {" "}
-      <div className=" max-w-6xl mx-auto flex gap-4 flex-col">
-        <div className="flex justify-between items-center">
-          {" "}
+      <div className="mx-auto p-8 flex gap-4 flex-col">
+        <div className="flex flex-col gap-4">
           <div className="flex gap-2">
             {" "}
             <h1 className="text-large font-bold">Characters</h1>
             <span className="text-gray-500">({favorites.length})</span>
           </div>
-        </div>
-
-        <div className="grid grid-cols-5 gap-4 flex-wrap">
-          {" "}
-          {favorites.map((character) => {
-            return (
-              <Link key={character._id} to={`/character/${character._id}`}>
-                {" "}
-                <CharacterCard
-                  key={character._id}
-                  character={character}
-                  onToggleFavorite={refreshFavorites}
-                />
-              </Link>
-            );
-          })}
-        </div>
-        <div className=" max-w-6xl mx-auto flex gap-4 flex-col mt-6 mb-20">
-          <div className="flex justify-between items-center">
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {" "}
-            <div className="flex gap-2">
-              {" "}
-              <h1 className="text-large font-bold">Comics</h1>
-              <span className="text-gray-500">({favoritesComics.length})</span>
-            </div>
+            {favorites.map((character) => {
+              return (
+                <Link key={character._id} to={`/character/${character._id}`}>
+                  {" "}
+                  <CharacterCard
+                    key={character._id}
+                    character={character}
+                    onToggleFavorite={refreshFavorites}
+                  />
+                </Link>
+              );
+            })}
           </div>
-
-          <div className="grid grid-cols-5 gap-4 flex-wrap">
+        </div>{" "}
+        <div className="mt-6 mb-20 flex flex-col gap-4">
+          {" "}
+          <div className="flex gap-2">
+            {" "}
+            <h1 className="text-large font-bold">Comics</h1>
+            <span className="text-gray-500">({favoritesComics.length})</span>
+          </div>
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {" "}
             {favoritesComics.map((comic) => {
               return (
